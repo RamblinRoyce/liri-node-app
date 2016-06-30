@@ -82,7 +82,25 @@
 // use if then statements
 // ? incorporate API's & AJAX queryurl calls for Twitter, Spotify, 
 // use npm packages for twitter, sportify, request
+
+// = = = = = = = BEGIN TO DO LIST = = = = = = = 
+// X = completed
+// fix my-tweets errors
+// 		get latest 20 tweets
+// spotify-this-song
+// 		research npm spotify and develop json.parse
+// movie-this
+// do-what-it-says
+// 		research read, write, ... and develop
+// log file
+// 		research write, append, ... and develop
+// JSON Package 
+// 		research and develop so npm packages twitter, request, spotify, ... are installed
+// = = = = = = = END TO DO LIST = = = = = = = 
+
+
 // = = = = = = = END INSTRUCTIONS = = = = = = = 
+
 
 
 // = = = = = = = BEGIN CODE = = = = = = = 
@@ -207,14 +225,67 @@ if (cmdinstr == "my-tweets") {
 	// AJAX request/OMDB data
 	
 	// = = = TEST FUNCTIONS = = = 
-	outputNum = parseFloat(num1) + parseFloat(num2);
-	console.log(outputNum)
+	// outputNum = parseFloat(num1) + parseFloat(num2);
+	// console.log(outputNum)
 	// = = = END TEST FUNCTIONS = = = 
+
+	// Include the request npm package (Don't forget to run "npm install request" in this folder first!)
+	var request = require('request');
+
+	// Store all of the arguments in an array 
+	var nodeArgs = process.argv;
+
+	// Create an empty variable for holding the movie name
+	var movieName = "";
+
+	// Loop through all the words in the node argument
+	// And do a little for-loop magic to handle the inclusion of "+"s
+	for (var i=3; i<nodeArgs.length; i++){
+		if (i>3 && i< nodeArgs.length){
+			movieName = movieName + "+" + nodeArgs[i];
+		}
+		else {
+			movieName = movieName + nodeArgs[i];
+		}
+	}
+
+	// Then run a request to the OMDB API with the movie specified 
+	var queryUrl = 'http://www.omdbapi.com/?t=' + movieName +'&y=&plot=short&r=json&tomatoes=true';
+
+	// This line is just to help us debug against the actual URL.  
+	// console.log(queryUrl);
+
+	request(queryUrl, function (error, response, body) {
+
+		// If the request is successful (i.e. if the response status code is 200)
+		if (!error && response.statusCode == 200) {
+
+			// Parse the body of the site and recover just the imdbRating
+			// (Note: The syntax below for parsing isn't obvious. Just spend a few moments dissecting it). 
+			// movie-this
+				// * Title
+				// * Year
+				// * IMDB Rating
+				// * Country
+				// * Language
+				// * Plot
+				// * Actors
+				// * Rotten Tomatoes Rating 
+				// * Rotton Tomatoes UrL
+
+			console.log(response)
+			console.log("Title: " + JSON.parse(body)["Title"])
+			console.log("Release Year: " + JSON.parse(body)["Year"])
+		}
+	});
+
 
 	// if no response data, then 
 	// if no movie is provided then the program will output information for the movie: 'Mr. Nobody'
 
 	// append command and results to log.txt 
+
+
 
 } else if (cmdinstr == "do-what-it-says") {
 	// Using the fs package in node, the program would take the text inside of random.txt and use it to call the first command with the second part as it's parameter
