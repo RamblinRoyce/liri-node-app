@@ -148,7 +148,7 @@ var twitterKeys = require('./keys.js');
 if (cmdinstr == "my-tweets") {
 	// AJAX twitter data for last 20 tweets
 	outputNum = parseFloat(num1) + parseFloat(num2);
-
+	console.log(outputNum)
 	// append command and results to log.txt 
 
 } else if (cmdinstr == "spotify-this-song") {
