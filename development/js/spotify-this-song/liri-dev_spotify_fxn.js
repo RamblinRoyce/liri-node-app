@@ -107,7 +107,6 @@
 
 
 // = = = = = = = BEGIN CODE = = = = = = = 
-var twitterKeys = require('./keys.js');
 
 // Takes in all of the command line arguments
 	var inputString = process.argv;
@@ -166,6 +165,36 @@ var twitterKeys = require('./keys.js');
 
 // }
 
+function spotify() {
+	// npm install spotify
+	// spotify-this-song
+		// artist(s)
+		// song name
+		// preview link of the song from spotify
+		// album that the song is a part of
+		// song name
+		console.log("SPOTIFY-test")
+
+		// lookup: function({ type: 'artist OR album OR track', id: 'Spotify ID Hash' }, hollaback)
+		// search: function({ type: 'artist OR album OR track', query: 'My search query' }, hollaback)
+		// get: function(query, hollaback) -- See http://developer.spotify.com/en/metadata-api/overview/ 
+
+		var spotify = require('spotify');
+ 
+		spotify.search({ type: 'track', query: 'dancing in the moonlight' }, function(err, data) {
+		    if ( err ) {
+		        console.log('Error occurred: ' + err);
+		        return;
+		    }
+		    else {
+		    	console.log(data)
+		    	
+		    }
+		 
+		    // Do something with 'data' 
+		});
+}
+
 // Determines the cmdinstr selected...
 if (cmdinstr == "my-tweets") {
 	// twitter data for last 20 tweets
@@ -185,6 +214,7 @@ if (cmdinstr == "my-tweets") {
 	
 	// Include the twitter npm package (Don't forget to run "npm install twitter" in this folder first!)
 	// var request = require('request');
+	var twitterKeys = require('./keys.js');
 
 		var Twitter = require('twitter');
  
@@ -217,8 +247,11 @@ if (cmdinstr == "my-tweets") {
 
 } else if (cmdinstr == "spotify-this-song") {
 	// AJAX spotify data
-	outputNum = parseFloat(num1) - parseFloat(num2);
+	// outputNum = parseFloat(num1) - parseFloat(num2);
 	
+	// console.log("SPOTIFY")
+	spotify();
+
 	// if no response data, then 
 	// return "what's my age again" by blink 182
 
@@ -400,13 +433,13 @@ if (cmdinstr == "my-tweets") {
 	var dataArr = data.split(',');
 
 	// We will then re-display the content with the split for aesthetics.
-	console.log(dataArr);
-	console.log(dataArr[0]);
-	console.log(dataArr[1]);
+	// console.log(dataArr);
+	// console.log(dataArr[0]);
+	// console.log(dataArr[1]);
 	
-	console.log(cmdinstr)
+	// console.log(cmdinstr)
 	cmdinstr = dataArr[0];
-	console.log(cmdinstr)
+	// console.log(cmdinstr)
 
 	if (cmdinstr == "my-tweets") {
 		// tweets();	// call function tweets

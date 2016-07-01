@@ -400,13 +400,13 @@ if (cmdinstr == "my-tweets") {
 	var dataArr = data.split(',');
 
 	// We will then re-display the content with the split for aesthetics.
-	console.log(dataArr);
-	console.log(dataArr[0]);
-	console.log(dataArr[1]);
+	// console.log(dataArr);
+	// console.log(dataArr[0]);
+	// console.log(dataArr[1]);
 	
-	console.log(cmdinstr)
+	// console.log(cmdinstr)
 	cmdinstr = dataArr[0];
-	console.log(cmdinstr)
+	// console.log(cmdinstr)
 
 	if (cmdinstr == "my-tweets") {
 		// tweets();	// call function tweets
