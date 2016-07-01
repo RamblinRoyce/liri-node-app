@@ -82,18 +82,25 @@
 // use if then statements
 // ? incorporate API's & AJAX queryurl calls for Twitter, Spotify, 
 // use npm packages for twitter, sportify, request
+// = = = = = = = END INSTRUCTIONS = = = = = = = 
 
+
+// = = = = = = = BEGIN CODE = = = = = = = 
 var twitterKeys = require('./keys.js');
 
+// Takes in all of the command line arguments
+	var inputString = process.argv;
+
+// Parses the command line argument 
 // Command Instructions possibilities: my-tweets, spotify-this-song, movie-this, do-what-it-says
-var cmdinstr = inputString[2];
-var num1 	= inputString[3];	
-var num2	= inputString[4];
+	var cmdinstr = inputString[2];
+	var num1 = inputString[3];	
+	var num2 = inputString[4];
 
 // Here's the variable we will be modifying with the new numbers
-var output;
+	var output;
 
-// OUTPUT VARIABLES - MAY NOT NEED CUZ USE OBJECT CALLS VIA AJAX
+// VARIABLES - MAY NOT NEED CUZ USE OBJECT CALLS VIA AJAX
 	// my-tweets
 		var tweets = ""
 
@@ -132,20 +139,19 @@ var output;
 
 
 // verify command instructions
-if (cmdinstr !== "my-tweets") {
-	console.log("Command not recognized.\n Please enter one of the following commands: \n my-tweets \n spotify-this-song 'song name' \n movie-this 'movie name' \n do-what-it-says");
-	
-}
+// if (cmdinstr !== "my-tweets") {
+// 	console.log("Command not recognized.\n Please enter one of the following commands: \n my-tweets \n spotify-this-song 'song name' \n movie-this 'movie name' \n do-what-it-says");
+
+// }
 
 // Determines the cmdinstr selected...
-if (cmdinstr == "my-tweets"){
+if (cmdinstr == "my-tweets") {
 	// AJAX twitter data for last 20 tweets
 	outputNum = parseFloat(num1) + parseFloat(num2);
 
 	// append command and results to log.txt 
-}
 
-else if (cmdinstr == "spotify-this-song"){
+} else if (cmdinstr == "spotify-this-song") {
 	// AJAX spotify data
 	outputNum = parseFloat(num1) - parseFloat(num2);
 	
@@ -154,9 +160,7 @@ else if (cmdinstr == "spotify-this-song"){
 
 	// append command and results to log.txt 
 
-}
-
-else if (cmdinstr == "movie-this"){
+} else if (cmdinstr == "movie-this") {
 	// AJAX request/OMDB data
 	outputNum = parseFloat(num1) * parseFloat(num2);
 	
@@ -164,9 +168,8 @@ else if (cmdinstr == "movie-this"){
 	// if no movie is provided then the program will output information for the movie: 'Mr. Nobody'
 
 	// append command and results to log.txt 
-}
 
-else if (cmdinstr == "do-what-it-says"){
+} else if (cmdinstr == "do-what-it-says") {
 	// Using the fs package in node, the program would take the text inside of random.txt and use it to call the first command with the second part as it's parameter
 	// Currently in random.txt, the following text is there:
 	// spotify-this-song,"I Want it That Way"
@@ -176,11 +179,11 @@ else if (cmdinstr == "do-what-it-says"){
 
 	// append command and results to log.txt 
 
-}
-
-else (){
+} else {
 	// respond with "command not found, please use my-tweets, spotify-this-song, movie-this, or do-what-it-says"
-	console.log("command not found, please use my-tweets, spotify-this-song, movie-this, or do-what-it-says")
+	// console.log("command not found, please use my-tweets, spotify-this-song, movie-this, or do-what-it-says")
+
+	console.log("Command not recognized.\n Please enter one of the following commands: \n my-tweets \n spotify-this-song 'song name' \n movie-this 'movie name' \n do-what-it-says");
 
 	// append command and results to log.txt 
 }
