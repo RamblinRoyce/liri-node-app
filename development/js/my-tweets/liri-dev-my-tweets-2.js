@@ -88,8 +88,10 @@
 // 1, 2, 3, ... = priority list
 // 
 // 3. fix my-tweets errors
+// 		getting response data, can't parse it out
 // 		get latest 20 tweets
 // 2. spotify-this-song
+// 		can't get response data
 // 		research npm spotify and develop json.parse
 // 4. movie-this
 // 		add movie check if title = "undefined" then run mr. nobody
@@ -98,6 +100,7 @@
 // 6. log file (Bonus)
 // 		research write, append, ... and develop
 // 5. JSON Package 
+// 		getting errors
 // 		research and develop so npm packages twitter, request, spotify, fs, ... are installed
 // = = = = = = = END TO DO LIST = = = = = = = 
 
