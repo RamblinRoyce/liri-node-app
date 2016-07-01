@@ -1,0 +1,22 @@
+{
+  "name": "LIRI",
+  "version": "1.0.0",
+  "description": "LIRI is a Language Interpretation and Recognition Interface.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "OMDB",
+    "Rotten Tomatoes",
+    "Spotify"
+    "Twitter"
+  ],
+  "author": "Royce Ching",
+  "license": "ISC",
+  "dependencies": {
+    "twitter": "^1.3.0",
+    "spotify-web-api-node": "^2.3.0",
+    "request": "^2.72.0",
+  }
+}
