@@ -85,16 +85,19 @@
 
 // = = = = = = = BEGIN TO DO LIST = = = = = = = 
 // X = completed
-// fix my-tweets errors
+// 1, 2, 3, ... = priority list
+// 
+// 3. fix my-tweets errors
 // 		get latest 20 tweets
-// spotify-this-song
+// 2. spotify-this-song
 // 		research npm spotify and develop json.parse
-// movie-this
-// do-what-it-says
+// 4. movie-this
+// 		add movie check if title = "undefined" then run mr. nobody
+// 1. do-what-it-says
 // 		research read, write, ... and develop
-// log file
+// 6. log file (Bonus)
 // 		research write, append, ... and develop
-// JSON Package 
+// 5. JSON Package 
 // 		research and develop so npm packages twitter, request, spotify, ... are installed
 // = = = = = = = END TO DO LIST = = = = = = = 
 
@@ -249,87 +252,121 @@ if (cmdinstr == "my-tweets") {
 		}
 	}
 
-	if (movieName == "") {
+	
+	if (movieName !== "") {
+		var queryUrl = 'http://www.omdbapi.com/?t=' + movieName +'&y=&plot=short&r=json&tomatoes=true';
+		request(queryUrl, function (error, response, body) {
+			if (!error && response.statusCode == 200) {
+				// function parseMovie () {
+				console.log("Title: " + JSON.parse(body)["Title"])
+				console.log("Release Year: " + JSON.parse(body)["Year"])
+				console.log("IMDB Rating: " + JSON.parse(body)["imdbRating"])
+				console.log("Country: " + JSON.parse(body)["Country"])
+				console.log("Language: " + JSON.parse(body)["Language"])
+				console.log("Plot: " + JSON.parse(body)["Plot"])
+				console.log("Actors: " + JSON.parse(body)["Actors"])
+				console.log("Rotten Tomatoes Rating: " + JSON.parse(body)["tomatoRating"])
+				console.log("Rotten Tomatoes URL: " + JSON.parse(body)["tomatoURL"])
+				// }	
+				// parseMovie();
+			}
+		});
+	}
+	else {
 		movieName = "Mr. Nobody";
-		// console.log(movieName)
+		var queryUrl = 'http://www.omdbapi.com/?t=' + movieName +'&y=&plot=short&r=json&tomatoes=true';
+		request(queryUrl, function (error, response, body) {
+			if (!error && response.statusCode == 200) {
+				// function parseMovie () {
+				console.log("Title: " + JSON.parse(body)["Title"])
+				console.log("Release Year: " + JSON.parse(body)["Year"])
+				console.log("IMDB Rating: " + JSON.parse(body)["imdbRating"])
+				console.log("Country: " + JSON.parse(body)["Country"])
+				console.log("Language: " + JSON.parse(body)["Language"])
+				console.log("Plot: " + JSON.parse(body)["Plot"])
+				console.log("Actors: " + JSON.parse(body)["Actors"])
+				console.log("Rotten Tomatoes Rating: " + JSON.parse(body)["tomatoRating"])
+				console.log("Rotten Tomatoes URL: " + JSON.parse(body)["tomatoURL"])
+				// }	
+				// parseMovie();
+			}
+		});
 	}
 
+	// if (!error && response.statusCode == 200 && movieName !== "") {
+	// 	var queryUrl = 'http://www.omdbapi.com/?t=' + movieName +'&y=&plot=short&r=json&tomatoes=true';
 
-	// Then run a request to the OMDB API with the movie specified 
-	var queryUrl = 'http://www.omdbapi.com/?t=' + movieName +'&y=&plot=short&r=json&tomatoes=true';
+		
+		
+	// }
+	// else {
 
-	// This line is just to help us debug against the actual URL.  
-	// console.log(queryUrl);
+	// }
+	// // Then run a request to the OMDB API with the movie specified 
+	// var queryUrl = 'http://www.omdbapi.com/?t=' + movieName +'&y=&plot=short&r=json&tomatoes=true';
 
-	request(queryUrl, function (error, response, body) {
+	// // This line is just to help us debug against the actual URL.  
+	// // console.log(queryUrl);
 
-		function parseMovie () {
-			console.log("Title: " + JSON.parse(body)["Title"])
-			console.log("Release Year: " + JSON.parse(body)["Year"])
-			console.log("IMDB Rating: " + JSON.parse(body)["imdbRating"])
-			console.log("Country: " + JSON.parse(body)["Country"])
-			console.log("Language: " + JSON.parse(body)["Language"])
-			console.log("Plot: " + JSON.parse(body)["Plot"])
-			console.log("Actors: " + JSON.parse(body)["Actors"])
-			console.log("Rotten Tomatoes Rating: " + JSON.parse(body)["tomatoRating"])
-			console.log("Rotten Tomatoes URL: " + JSON.parse(body)["tomatoURL"])
-		}	
+	// // request(queryUrl, function (error, response, body) {
 
-		function checkMovie () {
-			// console.log("Title: " + JSON.parse(body)["Title"])
-			if (JSON.parse(body)["Title"] = "undefined") {
-				var movieCheck = "false"
-				// return false;
-			}
-			else {
-				var movieCheck = "true"
-			}
-			// return true;
-		}	
+		
 
-		// checkMovie();
-		// console.log(checkMovieValue)
+	// // 	function checkMovie () {
+	// // 		// console.log("Title: " + JSON.parse(body)["Title"])
+	// // 		if (JSON.parse(body)["Title"] = "undefined") {
+	// // 			var movieCheck = "false"
+	// // 			// return false;
+	// 		}
+	// 		else {
+	// 			var movieCheck = "true"
+	// 		}
+	// 		// return true;
+	// 	}	
 
-		// If the request is successful (i.e. if the response status code is 200)
-		if (!error && response.statusCode == 200) {
-		// if (!error && response.statusCode == 200 && movieName !== "") {
-				// if (!error && response.statusCode == 200 && movieCheck == "true") {
+	// 	// checkMovie();
+	// 	// console.log(checkMovieValue)
 
-			// Parse the body of the site and recover just the imdbRating
-			// (Note: The syntax below for parsing isn't obvious. Just spend a few moments dissecting it). 
-			// movie-this
-				// * Title
-				// * Year
-				// * IMDB Rating
-				// * Country
-				// * Language
-				// * Plot
-				// * Actors
-				// * Rotten Tomatoes Rating 
-				// * Rotten Tomatoes UrL
+	// 	// If the request is successful (i.e. if the response status code is 200)
+	// 	if (!error && response.statusCode == 200) {
+	// 	// if (!error && response.statusCode == 200 && movieName !== "") {
+	// 			// if (!error && response.statusCode == 200 && movieCheck == "true") {
 
-			// console.log(response)
+	// 		// Parse the body of the site and recover just the imdbRating
+	// 		// (Note: The syntax below for parsing isn't obvious. Just spend a few moments dissecting it). 
+	// 		// movie-this
+	// 			// * Title
+	// 			// * Year
+	// 			// * IMDB Rating
+	// 			// * Country
+	// 			// * Language
+	// 			// * Plot
+	// 			// * Actors
+	// 			// * Rotten Tomatoes Rating 
+	// 			// * Rotten Tomatoes UrL
+
+	// 		// console.log(response)
 	
-			parseMovie();
-			// console.log("Title: " + JSON.parse(body)["Title"])
-			// console.log("Release Year: " + JSON.parse(body)["Year"])
-			// console.log("IMDB Rating: " + JSON.parse(body)["imdbRating"])
-			// console.log("Country: " + JSON.parse(body)["Country"])
-			// console.log("Language: " + JSON.parse(body)["Language"])
-			// console.log("Plot: " + JSON.parse(body)["Plot"])
-			// console.log("Actors: " + JSON.parse(body)["Actors"])
-			// console.log("Rotten Tomatoes Rating: " + JSON.parse(body)["tomatoRating"])
-			// console.log("Rotten Tomatoes URL: " + JSON.parse(body)["tomatoURL"])
-		}
-		else {
-			// if no movie is provided then the program will output information for the movie: 'Mr. Nobody'
-			console.log("Sorry, that movie was not found!\n Here's some info for Mr.Nobody.\n If you haven't watched Mr. Nobody then you should: http://www.imdb.com/title/tt0485947/\n You can catch it on Netflix!");
-			// movieName = "Mr.Nobody";
-			// Then run a request to the OMDB API with the movie specified 
-			// var queryUrl = 'http://www.omdbapi.com/?t=' + movieName +'&y=&plot=short&r=json&tomatoes=true';
-			parseMovie();
-		}
-	});
+	// 		parseMovie();
+	// 		// console.log("Title: " + JSON.parse(body)["Title"])
+	// 		// console.log("Release Year: " + JSON.parse(body)["Year"])
+	// 		// console.log("IMDB Rating: " + JSON.parse(body)["imdbRating"])
+	// 		// console.log("Country: " + JSON.parse(body)["Country"])
+	// 		// console.log("Language: " + JSON.parse(body)["Language"])
+	// 		// console.log("Plot: " + JSON.parse(body)["Plot"])
+	// 		// console.log("Actors: " + JSON.parse(body)["Actors"])
+	// 		// console.log("Rotten Tomatoes Rating: " + JSON.parse(body)["tomatoRating"])
+	// 		// console.log("Rotten Tomatoes URL: " + JSON.parse(body)["tomatoURL"])
+	// 	}
+	// 	else {
+	// 		// if no movie is provided then the program will output information for the movie: 'Mr. Nobody'
+	// 		console.log("Sorry, that movie was not found!\n Here's some info for Mr.Nobody.\n If you haven't watched Mr. Nobody then you should: http://www.imdb.com/title/tt0485947/\n You can catch it on Netflix!");
+	// 		// movieName = "Mr.Nobody";
+	// 		// Then run a request to the OMDB API with the movie specified 
+	// 		// var queryUrl = 'http://www.omdbapi.com/?t=' + movieName +'&y=&plot=short&r=json&tomatoes=true';
+	// 		parseMovie();
+	// 	}
+	// });
 
 
 	// if no response data, then 
