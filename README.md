@@ -6,13 +6,9 @@ UT Coding Bootcamp Homework Week 10 - LIRI Bot - Language Interpretation and Rec
 To whom it may concern:
 
 In GitBash:
-
 1 Please run npm install
-
 2 $ node liri.js my-tweets  
-
   (doesn't work, couldn't parse out the response data.  tried stringify/parse separate and together)
-
 3 $ node liri.js spotify-this-song 'song name
 
   (coudn't get damn spotify to return any response data. downloaded one of the developer's https://github.com/thelinmichael/spotify-web-api-node and tried running his code and couldn't get it to work)
