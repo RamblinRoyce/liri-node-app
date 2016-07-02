@@ -9,7 +9,7 @@
   "keywords": [
     "OMDB",
     "Rotten Tomatoes",
-    "Spotify",
+    "Spotify"
     "Twitter"
   ],
   "author": "Royce Ching",
@@ -17,6 +17,6 @@
   "dependencies": {
     "twitter": "^1.3.0",
     "spotify-web-api-node": "^2.3.0",
-    "request": "^2.72.0"
+    "request": "^2.72.0",
   }
 }
