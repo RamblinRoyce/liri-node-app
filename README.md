@@ -16,7 +16,7 @@ In GitBash:
 * 5 $ node liri.js do-what-it-says  
   (sorta works)
 
-The code is sloppy and there's more code commented out than actual functional code.  I didn't have time to clean it up but I also wanted you to see my testing/coding process.  If i were being paid (aka if i cared more) i like to think i'd be able to apply myself more. But i'm starting to wonder if i'd be more suited to data science and/or project management instead of coding...guess that's "imposter syndrome".
+The code is sloppy and there's more code commented out than actual functional code.  I didn't have time to clean it up but I also wanted you to see my testing/coding process.  If i were being paid (aka if i cared more) i like to think i'd be able to apply myself more. But i'm starting to wonder if i'd be more suited to data science and/or project management instead of FE/BE Web coding...guess that's "imposter syndrome".
 
 
 In pseudocode,  
